@@ -1,3 +1,13 @@
+/*
+
+	Copyright (C)2020 Jeffery_Yu
+    Licence Under MIT
+    
+    sentence.h
+	这里是整理好的名句
+    （虽然没必要整合到头文件里，但目的达成就行）
+*/
+
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
