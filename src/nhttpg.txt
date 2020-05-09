@@ -1,0 +1,58 @@
+HTTP/1.0 200 OK
+Server:AWSL
+Content-type:text/html
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <link rel="shortcut  icon" href="http://git.kawashiros.club/img/favicon.png" type="image/x-icon" />
+    <link rel="stylesheet" type="text/css" href="http://git.kawashiros.club/css/u.css"/>
+    <title>Kappppppa!-Kawashiros</title>
+    <script type="text/javascript" src="http://git.kawashiros.club/js/u.js"></script>
+    <script>
+        setTimeout("showScopeBar()",8000);
+    </script>
+</head>
+
+<body>
+    <!--[if lte IE 11]>        
+        <div style="background-color:black; width : -webkit-fill-available">
+            <h3 style="color:cyan">你确定要继续<inred style="color:red">使用这个浏览器</inred>浏览下去吗？</h5>
+            <p style="color:aqua"> 大人！时代变了！换个浏览器再来吧！</p>
+        </div>
+    <![endif]-->
+    <div class="enterpage">
+        <div class="firstscreen">
+            <h1 style="color: white;font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;font-size: 60px;">Kawashiros!</h1>
+            <hr style="FILTER: alpha(opacity=100,finishopacity=0,style=3)" width="80%" size="3" color="#FFFFFF">
+            <div id="scopebar" >
+                <br>
+                <p id="sentence" style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">
+                    非科学なカッパ-个人站点
+                </p>
+                <hr style="FILTER: alpha(opacity=100,finishopacity=0,style=3)" width="80%" size="3" color="#FFFFFF">
+                <div align="center">
+                    <button onclick="BlogPage()" class="button" style="vertical-align:middle">Blog</button>        <button onclick="developer()" class="button" style="vertical-align:middle">Git服务器</button>
+                </div>
+            </div>
+            
+        </div>
+        <div id="MonikaIsHere" style="position: fixed;height: 100px;width: 100%;">
+            <script>
+                var dokidoki = Math.random();
+                console.log(dokidoki);
+                if(dokidoki > 0.9){
+                    document.write("<img src=\"https://img.moegirl.org/common/2/2b/MonikaQ.png\" onclick=\"mOИфκΔ()\"></img>");
+                    console.log("嗨，这里是莫妮卡！欢迎加入文学部！我一直梦想着，可以为我热爱的事物做些特别的事情。既然你成为了社团的一员，那么你就可以帮我在这个可爱的游戏里实现梦想！你每天都可以和四个可爱而又特殊的社团成员闲聊、进行有趣的活动：纱世里，青春而又阳光，将幸福视为最重要的东西；夏树，这个外表看起来可爱的女孩，可能随时都会给你自信一击；优里，害羞而又神秘，在书的世界中寻找到了慰藉；...当然还有，莫妮卡，文学部的部长！就是我！我超级期待你能和所有人交上朋友，帮助文学部成为所有成员的贴心之处。我已经能看出来你是个小甜心了—你能保证和花最长的时候和我在一起吗？♥ ");
+                }
+            </script>
+        </div>
+
+    </div>
+    <div id="footer" style="padding: 20px;color:white">
+        <hr style="FILTER: alpha(opacity=100,finishopacity=0,style=3)" width="100%" size="3" color="#FFFFFF"><h8>Copyright © 2020 Jeffery_Yu</h8>
+    </div>
+    
+</body></html>

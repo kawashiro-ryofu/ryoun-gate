@@ -13,7 +13,7 @@
 #include <stdlib.h>
 #include <time.h>
 
-char* sentence(){
+char* randSentence(){
 	char* sentences[]={
     "没必要的事就不做，必要的事就尽快做。——《冰菓》",
     "因为触碰的差别而察觉到真相，应该说是侥幸吧。——《猫物语》",
