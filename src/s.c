@@ -14,6 +14,7 @@
 #include <sys/socket.h>
 #include <netdb.h>
 #include "httpf.h"
+#include "log.h"
 
 _Bool servOLcheck(void);
 //主循环（不知道为什么就做出了这个）
@@ -27,23 +28,24 @@ void mainloop(void){
 	local.sin_port = htons(80);
 	bind(server_socket,(struct sockaddr*)&local,sizeof(local));
 	
-  	printf("binding success!\n");
+  	log(I,"binding success!");
 	//监听套接字
   	listen(server_socket,40);
 	
-  	printf("listening...\n");
+  	log(I,"listening...");
 	
 	while (1){
 		struct sockaddr_in clnt_addr;
 		int clen = sizeof(clnt_addr);
 		//客户端IP获取
 	      	getpeername(server_socket,(struct sockaddr*)&clnt_addr,&clen);
-		printf("Cilent IP:%s\n",inet_ntoa(clnt_addr.sin_addr));
+		log(W,inet_ntoa(clnt_addr.sin_addr));
+				
 		socklen_t clnt_addr_size = sizeof(clnt_addr);
 		
 	      	//返回给客户端的套接字
       		int clnt_sock = accept(server_socket,(struct sockaddr*)&clnt_addr,&clnt_addr_size);
-		printf("Accepted...\n");
+		log(I,"Accepted...");
 		
 		//http报文读取
 		char* outp;
@@ -52,8 +54,7 @@ void mainloop(void){
 		}else{
 			outp = ehttpg();
 		}
-		printf("%s",outp);
-		printf("Sending...\n");
+		log(I,"Sending...");
 		write(clnt_sock,outp,4096);
 		//关闭套接字
 		close(clnt_sock);
