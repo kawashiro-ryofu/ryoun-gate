@@ -1,3 +1,11 @@
+/*
+	Copyright 2020 Jeffery_Yu
+    Licence Under MIT
+    
+    httpf.h
+    HTTP报文读取
+
+*/
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -6,6 +14,7 @@
 char* ehttpg(void);
 char* nhttpg(void){
 	FILE *fp;
+  	//读取当前目录下HTTP报文文件
 	fp = fopen("nhttpg.txt","r");
 	if(fp == NULL)exit(0);
 	char *a = malloc(65536);
@@ -22,6 +31,7 @@ char* nhttpg(void){
 }
 
 char* ehttpg(void){
+  	//出错页
 	char *http = "HTTP/1.0 200 OK\r\nServer:AWSL\r\nContent-type:text/html\r\n\r\n";
 	char *text = randSentence();
 	char *outp =(char*) malloc(4096);
