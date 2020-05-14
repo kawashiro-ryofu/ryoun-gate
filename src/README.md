@@ -2,9 +2,13 @@
 源码遵循MIT协议
 
 **s.c** 主服务器源码
+
 **log.h** 日志记录
+
 **httpf.h** HTTP报文文本读取
+
 **nhttpg.txt** HTTP报文
+
 **sentences.h** 收集的句子，呵呵
 
 ## To-do List
