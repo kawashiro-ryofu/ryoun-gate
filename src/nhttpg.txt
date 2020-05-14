@@ -17,12 +17,6 @@ Content-type:text/html
 </head>
 
 <body>
-    <!--[if lte IE 11]>        
-        <div style="background-color:black; width : -webkit-fill-available">
-            <h3 style="color:cyan">你确定要继续<inred style="color:red">使用这个浏览器</inred>浏览下去吗？</h5>
-            <p style="color:aqua"> 大人！时代变了！换个浏览器再来吧！</p>
-        </div>
-    <![endif]-->
     <div class="enterpage">
         <div class="firstscreen">
             <h1 style="color: white;font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;font-size: 60px;">Kawashiros!</h1>
