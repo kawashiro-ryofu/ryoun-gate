@@ -1,6 +1,6 @@
 /*
 
-	Copyright (C)2020 Jeffery_Yu
+	Copyright (C)2020 Jeffery_Yu(Kawashiro_Ryofu)
     Licence Under MIT
     
     sentence.h
