@@ -1,5 +1,5 @@
 /*
-	Copyright 2020 Jeffery_Yu
+	Copyright 2020 Jeffery_Yu(Kawashiro_Ryofu)
     Licence Under MIT
     
     log.h
