@@ -28,11 +28,11 @@ void mainloop(void){
 	local.sin_port = htons(80);
 	bind(server_socket,(struct sockaddr*)&local,sizeof(local));
 	
-  	log(I,"binding success!");
+  	log(I,"Bind success!");
 	//监听套接字
   	listen(server_socket,40);
 	
-  	log(I,"listening...");
+  	log(I,"Listening...");
 	
 	while (1){
 		struct sockaddr_in clnt_addr;
@@ -46,25 +46,29 @@ void mainloop(void){
 		
 	    //返回给客户端的套接字
       	int clnt_sock = accept(server_socket,(struct sockaddr*)&clnt_addr,&clnt_addr_size);
-		log(I,"Accepted...");
+		log(I,"Accepted...");		
 		
 		char* getrq = malloc(4096);
 		memset(getrq,'\0',4096);
 		recv(clnt_sock,getrq,4096,0);
 
+		printf("\n\n\033[34;1m%s\033[;0m\n",getrq);
+
 		//http报文读取
 		char* outp;
 		
-      	if(servOLcheck("Server0x00")){
+      	if(servOLcheck("git.kawashiros.club")){
+			log(I,"Server Connected");
 			outp = nhttpg();
 		}else{
+			log(E,"Server Offline!Returned HTTP 503");
 			outp = ehttpg();
 		}
 		
       	log(I,"Sending...");
       	
 		//原先通过write函数的发送方式在此处将会被send函数代替
-      	send(clnt_sock,outp,sizeof(outp),0);
+      	send(clnt_sock,outp,8192,0);
 		//关闭套接字
 		close(clnt_sock);
 	}
