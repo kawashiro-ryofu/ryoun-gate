@@ -3,7 +3,7 @@
     Licence Under MIT
     
     s.c
-    服务程序本体
+    服务程序本体（未编译）
 
 */
 #include <stdio.h>
@@ -50,12 +50,15 @@ void mainloop(void){
 		
 		//http报文读取
 		char* outp;
-		if(servOLcheck()){
+		
+      	if(servOLcheck('Server0x00')){
 			outp = nhttpg();
 		}else{
 			outp = ehttpg();
 		}
-		log(I,"Sending...");
+		
+      	log(I,"Sending...");
+      	
 		//原先通过write函数的发送方式在此处将会被send函数代替
       	send(clnt_sock,outp,sizeof(outp),0);
 		//关闭套接字
@@ -70,9 +73,9 @@ int main(void){
 	
 	return 0;
 }
-_Bool servOLcheck(void){
+_Bool servOLcheck(char* destination){
 	struct hostent *server;
-	server = gethostbyname("git.kawashiros.club");
+	server = gethostbyname(destination);
 	if(server == NULL)return 0;
 	else if(!strcmp("10.10.0.1",inet_ntoa(*((struct in_addr *)server->h_addr))))return 0;
 	else return 1;
