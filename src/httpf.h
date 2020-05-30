@@ -32,11 +32,11 @@ char* nhttpg(void){
 
 char* ehttpg(void){
   	//出错页
-	char *http = "HTTP/1.0 200 OK\r\nServer:AWSL\r\nContent-type:text/html\r\n\r\n";
+	char *http = "HTTP/1.0 503 Service Unavailable\r\nRetry-After: 180\r\nServer:AWSL\r\nContent-type:text/html\r\n\r\n";
 	char *text = randSentence();
 	char *outp =(char*) malloc(4096);
 	memset(outp,'\0',4096);
-	char *html[2]={"\r\n<!doctype html><head><meta charset = \"utf-8\"><title>例行维护中  -Kawashiros</title></head><body style=\"background-color:yellow\"><h1 style=\"font-size:96px\">:(</h1><h3 style=\"font-size:64px\">服务器例行维护中</h3><p>","</p></body>"};
+	char *html[2]={"\r\n<!doctype html><head><meta charset = \"utf-8\"><title>啊咧咧？  -Kawashiros</title></head><body style=\"background-color:yellow\"><h1 style=\"font-size:96px\">:(</h1><h3 style=\"font-size:64px\">服务器在摸鱼啊……</h3><p>","</p></body>"};
 	strcat(outp,http);
 	strcat(outp,html[0]);
 	strcat(outp,text);

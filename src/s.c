@@ -3,7 +3,7 @@
     Licence Under MIT
     
     s.c
-    服务程序本体（未编译）
+    服务程序本体
 
 */
 #include <stdio.h>
@@ -16,7 +16,7 @@
 #include "httpf.h"
 #include "log.h"
 
-_Bool servOLcheck(void);
+_Bool servOLcheck(char* destination);
 //主循环（不知道为什么就做出了这个）
 void mainloop(void){
 	//创建套接字，绑定地址
@@ -48,10 +48,14 @@ void mainloop(void){
       	int clnt_sock = accept(server_socket,(struct sockaddr*)&clnt_addr,&clnt_addr_size);
 		log(I,"Accepted...");
 		
+		char* getrq = malloc(4096);
+		memset(getrq,'\0',4096);
+		recv(clnt_sock,getrq,4096,0);
+
 		//http报文读取
 		char* outp;
 		
-      	if(servOLcheck('Server0x00')){
+      	if(servOLcheck("Server0x00")){
 			outp = nhttpg();
 		}else{
 			outp = ehttpg();
@@ -77,6 +81,5 @@ _Bool servOLcheck(char* destination){
 	struct hostent *server;
 	server = gethostbyname(destination);
 	if(server == NULL)return 0;
-	else if(!strcmp("10.10.0.1",inet_ntoa(*((struct in_addr *)server->h_addr))))return 0;
 	else return 1;
 }
