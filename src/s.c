@@ -3,7 +3,7 @@
     Licence Under MIT
     
     s.c
-    服务程序本体
+    服务程序本体（未编译）
 
 */
 #include <stdio.h>
@@ -37,25 +37,30 @@ void mainloop(void){
 	while (1){
 		struct sockaddr_in clnt_addr;
 		int clen = sizeof(clnt_addr);
-		//客户端IP获取
-	      	getpeername(server_socket,(struct sockaddr*)&clnt_addr,&clen);
+		
+      	//原客户端IP获取，将增加读取报文的方式
+	    getpeername(server_socket,(struct sockaddr*)&clnt_addr,&clen);
 		log(W,inet_ntoa(clnt_addr.sin_addr));
 				
 		socklen_t clnt_addr_size = sizeof(clnt_addr);
 		
-	      	//返回给客户端的套接字
-      		int clnt_sock = accept(server_socket,(struct sockaddr*)&clnt_addr,&clnt_addr_size);
+	    //返回给客户端的套接字
+      	int clnt_sock = accept(server_socket,(struct sockaddr*)&clnt_addr,&clnt_addr_size);
 		log(I,"Accepted...");
 		
 		//http报文读取
 		char* outp;
-		if(servOLcheck()){
+		
+      	if(servOLcheck('Server0x00')){
 			outp = nhttpg();
 		}else{
 			outp = ehttpg();
 		}
-		log(I,"Sending...");
-		write(clnt_sock,outp,4096);
+		
+      	log(I,"Sending...");
+      	
+		//原先通过write函数的发送方式在此处将会被send函数代替
+      	send(clnt_sock,outp,sizeof(outp),0);
 		//关闭套接字
 		close(clnt_sock);
 	}
@@ -68,9 +73,9 @@ int main(void){
 	
 	return 0;
 }
-_Bool servOLcheck(void){
+_Bool servOLcheck(char* destination){
 	struct hostent *server;
-	server = gethostbyname("git.kawashiros.club");
+	server = gethostbyname(destination);
 	if(server == NULL)return 0;
 	else if(!strcmp("10.10.0.1",inet_ntoa(*((struct in_addr *)server->h_addr))))return 0;
 	else return 1;
