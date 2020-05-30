@@ -37,14 +37,15 @@ void mainloop(void){
 	while (1){
 		struct sockaddr_in clnt_addr;
 		int clen = sizeof(clnt_addr);
-		//客户端IP获取
-	      	getpeername(server_socket,(struct sockaddr*)&clnt_addr,&clen);
+		
+      	//原客户端IP获取，将增加读取报文的方式
+	    getpeername(server_socket,(struct sockaddr*)&clnt_addr,&clen);
 		log(W,inet_ntoa(clnt_addr.sin_addr));
 				
 		socklen_t clnt_addr_size = sizeof(clnt_addr);
 		
-	      	//返回给客户端的套接字
-      		int clnt_sock = accept(server_socket,(struct sockaddr*)&clnt_addr,&clnt_addr_size);
+	    //返回给客户端的套接字
+      	int clnt_sock = accept(server_socket,(struct sockaddr*)&clnt_addr,&clnt_addr_size);
 		log(I,"Accepted...");
 		
 		//http报文读取
@@ -55,7 +56,8 @@ void mainloop(void){
 			outp = ehttpg();
 		}
 		log(I,"Sending...");
-		write(clnt_sock,outp,4096);
+		//原先通过write函数的发送方式在此处将会被send函数代替
+      	send(clnt_sock,outp,sizeof(outp),0);
 		//关闭套接字
 		close(clnt_sock);
 	}
