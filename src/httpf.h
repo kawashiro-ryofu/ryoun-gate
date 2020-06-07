@@ -10,13 +10,17 @@
 #include <stdlib.h>
 #include <string.h>
 #include "sentence.h"
+#include "log.h"
 
 char* ehttpg(void);
 char* nhttpg(void){
 	FILE *fp;
   	//读取当前目录下HTTP报文文件
 	fp = fopen("nhttpg.txt","r");
-	if(fp == NULL)exit(0);
+	if(fp == NULL){
+		log(E,"Could not read HTTP post file!No Such File Or Directory!");
+		exit(0);
+	}
 	char *a = malloc(65536);
 	memset(a,'\0',sizeof(char)*sizeof(a));
 	int c =  0;
@@ -25,7 +29,7 @@ char* nhttpg(void){
 		c++;
 		*(a+(c+1)) = '\0';
 	}while(!feof(fp));
-	*(a+c-1) = '\0';
+	*(a+c-sizeof(char)) = '\0';
 	fclose(fp);
 	return a;
 }

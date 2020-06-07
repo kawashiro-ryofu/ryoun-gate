@@ -14,7 +14,7 @@
 #include <sys/socket.h>
 #include <netdb.h>
 #include "httpf.h"
-#include "log.h"
+//#include "log.h"
 
 _Bool servOLcheck(char* destination);
 //主循环（不知道为什么就做出了这个）
