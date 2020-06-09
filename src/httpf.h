@@ -1,7 +1,7 @@
 /*
 	Copyright 2020 Jeffery_Yu(Kawashiro_Ryofu)
     Licence Under MIT
-    
+
     httpf.h
     HTTP报文读取
 
