@@ -71,13 +71,7 @@ void mainloop(void){
 		//http报文读取
 		char* outp;
 		
-      		if(servOLcheck("git.kawashiros.club")){
-			log(I,"Server Connected");
-			outp = nhttpg();
-		}else{
-			log(E,"Server Offline!Returned HTTP 503");
-			outp = ehttpg();
-		}
+		outp = nhttpg();
 		
 	     	log(I,"Sending...");
       	
@@ -101,6 +95,4 @@ int main(void){
 
 	return 0;
 }
-_Bool servOLcheck(char* destination){
-	
-}
+
